@@ -8,3 +8,7 @@
 
  ✓ Starting...
  ✓ Ready in 869ms
+ ○ Compiling / ...
+ ✓ Compiled / in 2.3s
+ GET / 200 in 1048ms
+ ✓ Compiled in 655ms
