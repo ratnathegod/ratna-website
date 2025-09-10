@@ -329,7 +329,7 @@ export default function Page() {
                 transition={{ duration: 0.7 }}
                 className="text-balance text-4xl font-bold leading-tight sm:text-5xl"
               >
-                Traversing spaceflight and decentralized systems into the next frontier
+                Traversing <span className="text-indigo-400">space</span> and <span className="text-indigo-400">decentralized systems</span>
               </motion.h2>
               <p className="mt-4 text-sm text-white/70">
                 I’m Ratna — an Aerospace & Computer Science major at the University of Colorado Boulder. I design production-grade agentic
