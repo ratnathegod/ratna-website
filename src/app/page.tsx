@@ -329,12 +329,12 @@ export default function Page() {
                 transition={{ duration: 0.7 }}
                 className="text-balance text-4xl font-bold leading-tight sm:text-5xl"
               >
-                Building at the edge of <span className="text-indigo-400">space</span> &{" "}
-                <span className="text-indigo-400">cryptography</span>
+                Traversing spaceflight and decentralized systems into the next frontier
               </motion.h2>
               <p className="mt-4 text-sm text-white/70">
-                I’m Ratna — an aerospace major & CS minor at CU Boulder. I ship production-grade agentic systems, flight-adjacent sims, and
-                high-performance services. Here are the projects I’m most proud of.
+                I’m Ratna — an Aerospace & Computer Science major at the University of Colorado Boulder. I design production-grade agentic
+                systems, build high-performance backends, and prototype flight-adjacent simulations that push the edge of aerospace and
+                blockchain technology.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <ButtonLink href="#projects">
@@ -377,7 +377,7 @@ export default function Page() {
                 Ratnakaru Yalagathala
               </motion.h1>
               <p className="mt-2 max-w-2xl text-sm text-white/70">
-                Aerospace × Blockchain × AI — building reliable agentic systems, high-performance backends, and flight-adjacent tooling.
+                Aerospace × Blockchain × AI — pioneering systems that are fast, intelligent, and built to last.
               </p>
             </div>
             <div className="flex items-center gap-2">
@@ -465,8 +465,9 @@ export default function Page() {
             <div className="sm:col-span-2">
               <h3 className="mb-2 text-2xl font-semibold tracking-tight">About</h3>
               <p className="text-sm text-white/70">
-                I’m a CU Boulder student (Aerospace major, CS minor) aiming at FAANG, quant, and aerospace roles. I enjoy building reliable
-                agents, performance-first backends, and flight-adjacent tooling.
+                I’m an Aerospace & Computer Science major at the University of Colorado Boulder, driven to explore the intersection of
+                advanced computing, quantitative engineering, and aerospace innovation. I focus on building resilient agentic systems,
+                ultra-fast backends, and flight-grade simulations that bridge digital and physical frontiers.
               </p>
               <div className="mt-3 flex flex-wrap gap-2">
                 {[
