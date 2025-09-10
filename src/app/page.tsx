@@ -246,7 +246,7 @@ function InfoTile({ icon, title, body }: { icon: React.ReactNode; title: string;
           <div className="text-base font-medium">{title}</div>
         </div>
         <Pill className="text-xs">
-          <Globe className="mr-1 h-3 w-3" /> Focus
+          <Globe className="mr-1 h-3 w-3" />
         </Pill>
       </div>
       <div className="px-4 pb-4">
@@ -449,7 +449,7 @@ export default function Page() {
           <div className="mt-6 grid gap-4 sm:grid-cols-3">
             <InfoTile
               icon={<Rocket className="h-5 w-5" />}
-              title="Aerospace Focus"
+              title="Aerospace"
               body="GNC, orbital mechanics, MPC — simulation-first thinking with reliability and constraints in mind."
             />
             <InfoTile
