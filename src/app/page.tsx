@@ -12,6 +12,7 @@ import {
   Globe,
   ExternalLink,
   Filter,
+  Check,
 } from "lucide-react";
 
 /* ---------------------- Types & Data ---------------------- */
@@ -349,15 +350,67 @@ export default function Page() {
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="relative h-56 rounded-2xl border border-white/10 bg-gradient-to-br from-white/10 to-transparent p-6 sm:h-64"
+              className="relative h-56 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur sm:h-64 before:pointer-events-none before:absolute before:inset-0 before:rounded-2xl before:p-px before:[mask:linear-gradient(#000,transparent,transparent,transparent,#000)] before:bg-[linear-gradient(135deg,rgba(99,102,241,.15),rgba(168,85,247,.12),transparent)]"
             >
-              <div className="absolute right-4 top-4 flex items-center gap-2 text-xs text-white/70">
-                <Rocket className="h-4 w-4" /> GNC • MPC • Orbital
+              {/* animated radial glow */}
+              <div
+                aria-hidden
+                className="absolute inset-0 rounded-2xl opacity-40 [background:radial-gradient(120px_80px_at_70%_30%,rgba(99,102,241,.25),transparent),radial-gradient(140px_90px_at_30%_70%,rgba(168,85,247,.2),transparent)] animate-pulse"
+              />
+
+              {/* content */}
+              <div className="relative z-10 flex h-full flex-col">
+                {/* top row */}
+                <div className="mb-3 flex items-center justify-between">
+                  <span className="inline-flex items-center rounded-full bg-indigo-500/20 px-2 py-1 text-[10px] font-medium text-indigo-400">
+                    Featured
+                  </span>
+                  <span className="inline-flex items-center gap-1 text-[11px] text-indigo-400">
+                    <Rocket aria-hidden className="h-3.5 w-3.5" /> Aerospace • Blockchain
+                  </span>
+                </div>
+
+                {/* title */}
+                <h3 className="line-clamp-2 text-balance text-lg font-semibold leading-snug text-white [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical]">
+                  Satellite Tasking Marketplace (Verifiable SLAs)
+                </h3>
+                {/* subtitle */}
+                <p className="mt-1 text-xs text-white/70">Auctions • Escrow • zk In-Region Proof</p>
+
+                {/* bullets */}
+                <ul className="mt-3 space-y-1.5 text-xs text-white/70">
+                  <li className="flex items-start gap-2">
+                    <Check aria-hidden className="mt-0.5 h-3.5 w-3.5 text-indigo-400" />
+                    <span>Escrow + staking + slashing</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check aria-hidden className="mt-0.5 h-3.5 w-3.5 text-indigo-400" />
+                    <span>Oracle attestations & SLA windows</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check aria-hidden className="mt-0.5 h-3.5 w-3.5 text-indigo-400" />
+                    <span>zk ‘in-region’ bounding-box proof</span>
+                  </li>
+                </ul>
+
+                {/* CTAs */}
+                <div className="mt-auto flex items-center gap-2 pt-3">
+                  <a
+                    href="#"
+                    aria-label="View Spec for Satellite Tasking Marketplace"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-600 px-3 py-1.5 text-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  >
+                    View Spec
+                  </a>
+                  <a
+                    href="#"
+                    aria-label="Open repository (work in progress)"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl px-3 py-1.5 text-sm hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  >
+                    Repo (WIP)
+                  </a>
+                </div>
               </div>
-              <div className="absolute bottom-4 left-4 flex items-center gap-2 text-xs text-white/70">
-                <CircuitBoard className="h-4 w-4" /> CrewAI • GraphRAG • Solidity
-              </div>
-              <div className="absolute inset-0 animate-pulse rounded-2xl bg-[radial-gradient(100px_60px_at_70%_30%,rgba(99,102,241,.25),transparent),radial-gradient(120px_80px_at_30%_70%,rgba(168,85,247,.2),transparent)]" />
             </motion.div>
           </div>
         </div>
