@@ -16,3 +16,7 @@
  ✓ Compiled in 781ms
  ✓ Compiled in 1284ms
  ✓ Compiled in 913ms
+ ○ Compiling /_not-found/page ...
+ ✓ Compiled /_not-found/page in 1524ms
+ GET /Ratnakaru_Yalagathala_Resume.pdf 404 in 2058ms
+ GET / 200 in 553ms
