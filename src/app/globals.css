@@ -5,22 +5,35 @@
 @layer base {
   html {
     @apply dark;
+    /* Force dark mode, override system preferences */
+    color-scheme: dark !important;
   }
   
   body {
     @apply bg-black text-white;
+    /* Ensure no white flash on load */
+    background-color: #000 !important;
+    color: #fff !important;
   }
   
-  /* Remove any prefers-color-scheme media queries that might interfere */
+  /* Override any system theme preferences */
   * {
-    color-scheme: dark;
+    color-scheme: dark !important;
+  }
+  
+  /* Remove any light mode media query interference */
+  @media (prefers-color-scheme: light) {
+    html, body {
+      background-color: #000 !important;
+      color: #fff !important;
+    }
   }
 }
 
 /* Ensure consistent dark styling for all components */
 @layer components {
   .dark {
-    color-scheme: dark;
+    color-scheme: dark !important;
   }
 }
 
@@ -28,8 +41,8 @@
 html,
 body {
   height: 100%;
-  background-color: #000; /* Dark background */
-  color: #fff;            /* White text */
+  background-color: #000 !important; /* Force dark background */
+  color: #fff !important;            /* Force white text */
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
@@ -41,8 +54,19 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Optional: selection color */
+/* Dark mode selection color */
 ::selection {
-  background: rgba(99, 102, 241, 0.4); /* Indigo-500 tint */
-  color: #fff;
+  background: rgba(99, 102, 241, 0.4) !important; /* Indigo-500 tint */
+  color: #fff !important;
+}
+
+/* Ensure all elements default to dark styling */
+* {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Override any potential light mode flashing */
+html, body, #__next {
+  background-color: #000 !important;
+  color: #fff !important;
 }

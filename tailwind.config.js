@@ -7,9 +7,9 @@ module.exports = {
   ],
   darkMode: 'class',
   theme: {
-    extend: {
-      // ...existing theme configuration...
-    },
+    extend: {},
   },
+  plugins: [],
+}
   plugins: [],
 }
