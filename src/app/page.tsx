@@ -3,6 +3,7 @@
 import React, { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
+  ArrowRight,
   Rocket,
   Satellite,
   CircuitBoard,
@@ -11,8 +12,6 @@ import {
   Mail,
   Globe,
   ExternalLink,
-  Filter,
-  Check,
 } from "lucide-react";
 
 /* ---------------------- Types & Data ---------------------- */
@@ -227,12 +226,78 @@ function ButtonLink({
 
 /* ---------------------- Background ---------------------- */
 const Starfield = () => (
-  <div className="pointer-events-none fixed inset-0 -z-10 [background:radial-gradient(circle_at_20%_20%,rgba(59,130,246,.12),transparent_35%),radial-gradient(circle_at_80%_30%,rgba(168,85,247,.10),transparent_35%),radial-gradient(circle_at_40%_80%,rgba(34,197,94,.08),transparent_35%)]">
-    <div className="absolute inset-0 opacity-60 [background-image:radial-gradient(2px_2px_at_20px_30px,rgba(255,255,255,.35),transparent),radial-gradient(1px_1px_at_120px_80px,rgba(255,255,255,.25),transparent),radial-gradient(1px_1px_at_220px_140px,rgba(255,255,255,.2),transparent),radial-gradient(2px_2px_at_420px_240px,rgba(255,255,255,.3),transparent)] [background-size:200px_200px]" />
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.06),rgba(0,0,0,0.0)_60%)]" />
-    <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:40px_40px]" />
+  <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-[#050608]">
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(99,102,241,0.18),transparent_32%),radial-gradient(circle_at_82%_20%,rgba(76,29,149,0.12),transparent_28%),radial-gradient(circle_at_52%_78%,rgba(24,24,27,0.78),transparent_42%)]" />
+    <div className="absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:72px_72px]" />
+    <div className="absolute inset-0 opacity-70 [background-image:radial-gradient(2px_2px_at_18%_24%,rgba(255,255,255,0.18),transparent),radial-gradient(1.5px_1.5px_at_72%_18%,rgba(255,255,255,0.12),transparent),radial-gradient(1.5px_1.5px_at_44%_72%,rgba(255,255,255,0.14),transparent),radial-gradient(2px_2px_at_84%_62%,rgba(255,255,255,0.1),transparent)]" />
+    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,6,8,0.16),rgba(5,6,8,0.84))]" />
   </div>
 );
+
+const SYSTEM_NODES = [
+  { x: "18%", y: "24%", delay: 0.2, size: "h-2 w-2" },
+  { x: "66%", y: "18%", delay: 0.55, size: "h-2.5 w-2.5" },
+  { x: "74%", y: "56%", delay: 0.9, size: "h-2 w-2" },
+  { x: "34%", y: "72%", delay: 1.2, size: "h-3 w-3" },
+  { x: "52%", y: "46%", delay: 1.5, size: "h-1.5 w-1.5" },
+];
+
+function SystemField() {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 24, scale: 0.98 }}
+      animate={{ opacity: 1, x: 0, scale: 1 }}
+      transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+      className="relative mx-auto aspect-[4/5] w-full max-w-[420px]"
+      aria-hidden
+    >
+      <div className="absolute inset-10 rounded-full bg-indigo-500/20 blur-3xl" />
+      <div className="absolute inset-0 rounded-[32px] border border-white/10 bg-white/[0.02]" />
+      <div className="absolute inset-0 rounded-[32px] bg-[radial-gradient(circle_at_20%_18%,rgba(99,102,241,0.22),transparent_36%),radial-gradient(circle_at_78%_24%,rgba(129,140,248,0.16),transparent_32%),linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[length:auto,auto,48px_48px,48px_48px] bg-[position:0_0,0_0,-1px_-1px,-1px_-1px]" />
+      <div className="absolute inset-4 rounded-[28px] border border-white/5" />
+
+      <motion.div
+        animate={{ opacity: [0.25, 0.65, 0.25] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute left-[15%] top-[24%] h-px w-[44%] origin-left rotate-[16deg] bg-gradient-to-r from-indigo-300/75 via-indigo-200/20 to-transparent"
+      />
+      <motion.div
+        animate={{ opacity: [0.2, 0.55, 0.2] }}
+        transition={{ duration: 5.5, repeat: Infinity, delay: 0.6, ease: "easeInOut" }}
+        className="absolute left-[35%] top-[46%] h-px w-[38%] origin-left -rotate-[18deg] bg-gradient-to-r from-white/40 via-indigo-200/20 to-transparent"
+      />
+      <motion.div
+        animate={{ opacity: [0.18, 0.45, 0.18] }}
+        transition={{ duration: 7, repeat: Infinity, delay: 0.2, ease: "easeInOut" }}
+        className="absolute left-[34%] top-[72%] h-px w-[24%] origin-left -rotate-[46deg] bg-gradient-to-r from-indigo-300/60 via-indigo-200/15 to-transparent"
+      />
+
+      <motion.div
+        animate={{ x: ["10%", "76%", "10%"] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute inset-y-10 w-px bg-gradient-to-b from-transparent via-indigo-200/35 to-transparent"
+      />
+
+      {SYSTEM_NODES.map((node) => (
+        <motion.span
+          key={`${node.x}-${node.y}`}
+          style={{ left: node.x, top: node.y }}
+          className={`absolute -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-200 shadow-[0_0_24px_rgba(129,140,248,0.55)] ${node.size}`}
+          animate={{ opacity: [0.35, 1, 0.35], scale: [1, 1.28, 1] }}
+          transition={{ duration: 4.2, repeat: Infinity, delay: node.delay, ease: "easeInOut" }}
+        >
+          <span className="absolute inset-[-6px] rounded-full border border-indigo-300/20" />
+        </motion.span>
+      ))}
+
+      <div className="absolute bottom-7 left-7 right-7 flex items-center justify-between text-[10px] uppercase tracking-[0.32em] text-white/35">
+        <span>reliability</span>
+        <span>latency</span>
+        <span>control</span>
+      </div>
+    </motion.div>
+  );
+}
 
 /* ---------------------- Small pieces ---------------------- */
 function InfoTile({ icon, title, body }: { icon: React.ReactNode; title: string; body: string }) {
@@ -320,98 +385,48 @@ export default function Page() {
       <Starfield />
 
       {/* HERO */}
-      <section className="relative">
-        <div className="mx-auto max-w-6xl px-4 pb-10 pt-16 sm:pb-16 sm:pt-24">
-          <div className="grid items-center gap-8 sm:grid-cols-2">
-            <div>
-              <motion.h2
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7 }}
-                className="text-balance text-4xl font-bold leading-tight sm:text-5xl"
-              >
-                Traversing <span className="text-indigo-400">space</span> and <span className="text-indigo-400">decentralized</span> systems
-              </motion.h2>
-              <p className="mt-4 text-sm text-white/70">
-                I’m Ratna — an Aerospace & Computer Science major at the University of Colorado Boulder. I design production-grade agentic
-                systems, build high-performance backends, and prototype flight-adjacent simulations that push the edge of aerospace and
-                blockchain technology.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <ButtonLink href="#projects">
-                  <Filter className="h-4 w-4" /> Explore Projects
-                </ButtonLink>
-                <ButtonLink href="/Ratnakaru_Yalagathala_Resume.pdf" variant="outline" newTab>
-                  Resume
-                </ButtonLink>
-              </div>
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+        <div className="mx-auto grid min-h-[88svh] max-w-6xl items-center gap-14 px-4 pb-16 pt-24 sm:pb-20 sm:pt-28 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)] lg:gap-16">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+            className="relative z-10 max-w-2xl"
+          >
+            <div className="mb-8 flex items-center gap-3 text-[11px] uppercase tracking-[0.32em] text-white/45">
+              <span className="inline-flex h-2 w-2 rounded-full bg-indigo-400 shadow-[0_0_18px_rgba(129,140,248,0.7)]" />
+              Boulder, Colorado
             </div>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="relative h-56 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur sm:h-64 before:pointer-events-none before:absolute before:inset-0 before:rounded-2xl before:p-px before:[mask:linear-gradient(#000,transparent,transparent,transparent,#000)] before:bg-[linear-gradient(135deg,rgba(99,102,241,.15),rgba(168,85,247,.12),transparent)]"
-            >
-              {/* animated radial glow */}
-              <div
-                aria-hidden
-                className="absolute inset-0 rounded-2xl opacity-40 [background:radial-gradient(120px_80px_at_70%_30%,rgba(99,102,241,.25),transparent),radial-gradient(140px_90px_at_30%_70%,rgba(168,85,247,.2),transparent)] animate-pulse"
-              />
 
-              {/* content */}
-              <div className="relative z-10 flex h-full flex-col">
-                {/* top row */}
-                <div className="mb-3 flex items-center justify-between">
-                  <span className="inline-flex items-center rounded-full bg-indigo-500/20 px-2 py-1 text-[10px] font-medium text-indigo-400">
-                    Featured
-                  </span>
-                  <span className="inline-flex items-center gap-1 text-[11px] text-indigo-400">
-                    <Rocket aria-hidden className="h-3.5 w-3.5" /> Aerospace • Blockchain
-                  </span>
-                </div>
+            <h1 className="text-6xl font-semibold tracking-[-0.07em] text-white sm:text-7xl md:text-[5.5rem]">Ratna</h1>
 
-                {/* title */}
-                <h3 className="line-clamp-2 text-balance text-lg font-semibold leading-snug text-white [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical]">
-                  Satellite Tasking Marketplace (Verifiable SLAs)
-                </h3>
-                {/* subtitle */}
-                <p className="mt-1 text-xs text-white/70">Auctions • Escrow • zk In-Region Proof</p>
+            <p className="mt-5 max-w-xl text-base text-indigo-100/82 sm:text-lg">
+              Systems engineer across aerospace, AI, and resilient infrastructure.
+            </p>
 
-                {/* bullets */}
-                <ul className="mt-3 space-y-1.5 text-xs text-white/70">
-                  <li className="flex items-start gap-2">
-                    <Check aria-hidden className="mt-0.5 h-3.5 w-3.5 text-indigo-400" />
-                    <span>Escrow + staking + slashing</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check aria-hidden className="mt-0.5 h-3.5 w-3.5 text-indigo-400" />
-                    <span>Oracle attestations & SLA windows</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check aria-hidden className="mt-0.5 h-3.5 w-3.5 text-indigo-400" />
-                    <span>zk ‘in-region’ bounding-box proof</span>
-                  </li>
-                </ul>
+            <p className="mt-6 max-w-xl text-sm leading-7 text-white/64 sm:text-base">
+              I build for constraint-heavy environments where latency, reliability, and operator clarity matter. Quiet on the surface,
+              precise underneath.
+            </p>
 
-                {/* CTAs */}
-                <div className="mt-auto flex items-center gap-2 pt-3">
-                  <a
-                    href="#"
-                    aria-label="View Spec for Satellite Tasking Marketplace"
-                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-600 px-3 py-1.5 text-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                  >
-                    View Spec
-                  </a>
-                  <a
-                    href="#"
-                    aria-label="Open repository (work in progress)"
-                    className="inline-flex items-center justify-center gap-2 rounded-xl px-3 py-1.5 text-sm hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                  >
-                    Repo (WIP)
-                  </a>
-                </div>
-              </div>
-            </motion.div>
+            <div className="mt-10 flex flex-wrap gap-3">
+              <ButtonLink href="#projects" className="bg-indigo-500 text-white hover:bg-indigo-400">
+                View Work <ArrowRight className="h-4 w-4" />
+              </ButtonLink>
+              <ButtonLink
+                href="https://github.com/ratnathegod"
+                variant="outline"
+                newTab
+                className="border-white/15 bg-white/[0.02] hover:border-white/25"
+              >
+                GitHub <Github className="h-4 w-4" />
+              </ButtonLink>
+            </div>
+          </motion.div>
+
+          <div className="relative flex items-center justify-start lg:justify-end">
+            <SystemField />
           </div>
         </div>
       </section>
@@ -421,14 +436,14 @@ export default function Page() {
         <div className="mx-auto max-w-6xl px-4 pt-10 sm:pt-16">
           <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
             <div>
-              <motion.h1
+              <motion.h2
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
                 className="text-3xl font-semibold tracking-tight sm:text-4xl"
               >
                 Ratnakaru Yalagathala
-              </motion.h1>
+              </motion.h2>
               <p className="mt-2 max-w-2xl text-sm text-white/70">
                 Aerospace × Blockchain × AI — pioneering systems that are fast, intelligent, and built to last.
               </p>
